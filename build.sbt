@@ -11,6 +11,7 @@ lazy val root = (project in file("."))
       "org.apache.spark" %% "spark-sql" % "3.0.1",
       "org.postgresql" % "postgresql" % "42.7.3",
       "com.oracle.database.jdbc" % "ojdbc8" % "23.3.0.23.09",
-      "org.apache.spark" %% "spark-sql-kafka-0-10" % "3.0.1"
+      "org.apache.spark" %% "spark-sql-kafka-0-10" % "3.0.1",
+      "com.typesafe" % "config" % "1.4.3",
     )
   )

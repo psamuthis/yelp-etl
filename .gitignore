@@ -1,3 +1,5 @@
 /.bsp/
 target/
-data/
+data/*
+
+!.gitkeep

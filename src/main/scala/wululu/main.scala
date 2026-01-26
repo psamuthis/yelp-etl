@@ -1,37 +1,39 @@
 package wululu
 
-import SparkSessionWrapper.spark
 import org.apache.spark.sql.{DataFrame}
+
+import wululu.SparkSessionWrapper.spark
+import wululu.DataConfigReader.Paths
 
 object ETL {
     def main(args: Array[String]): Unit = {
-        //val df: DataFrame = readTipCSV()
-        //println(s"${df.show(10)}")
-        //println(s"Total rows: ${df.count()}")
+        val tipsDF: DataFrame = readTipCSV()
+        println(s"${tipsDF.show(10)}")
+        println(s"Total rows: ${tipsDF.count()}")
 
-        val df = readCheckinJSON()
-        println(df.show(10, truncate = false))
-        println(df.count())
+        val checkinDF = readCheckinJSON()
+        println(checkinDF.show(10, truncate = false))
+        println(checkinDF.count())
 
-        //val df = readBusinessJSON()
-        //println(df.show(10))
-        //println(df.count())
+        val businessDF = readBusinessJSON()
+        println(businessDF.show(10))
+        println(businessDF.count())
 
         spark.stop()
     }
 
     def readTipCSV(): DataFrame = {
-        val csvReader = new CSVReader("/home/psamu/Documents/M2/S2/informatique-decisionnelle/data-integration/data/yelp_academic_dataset_tip.csv")
+        val csvReader = new CSVReader(Paths.CSV.tips)
         csvReader.readFile()
     }
 
     def readBusinessJSON(): DataFrame = {
-        val jsonReader = new JSONReader("/home/psamu/Documents/M2/S2/informatique-decisionnelle/data-integration/data/yelp_academic_dataset_business.json")
+        val jsonReader = new JSONReader(Paths.JSON.business)
         jsonReader.readNDJSONFile()
     }
 
     def readCheckinJSON(): DataFrame = {
-        val jsonReader = new JSONReader("/home/psamu/Documents/M2/S2/informatique-decisionnelle/data-integration/data/yelp_academic_dataset_checkin.json")
+        val jsonReader = new JSONReader(Paths.JSON.checkin)
         val df = jsonReader.readNDJSONFile()
         jsonReader.handleConcatenatedDates(df)
     }
