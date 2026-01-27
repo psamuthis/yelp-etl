@@ -2,12 +2,28 @@
 # COPY AND RENAMED TO pg_source.conf WITHIN THIS DIRECTORY
 # COPY AND RENAMED TO pg_source.conf WITHIN THIS DIRECTORY
 pg_source {
-  url = ${DB_URL:"jdbc:postgresql://localhost:5432/defaultdb"}
-  user = ${DB_USER:"db_user"}
-  password = ${DB_PASSWORD:"db_pwd"}
+  url = "jdbc:postgresql://localhost:5432/your_db"
+  url = ${?DB_URL}
+  
+  user = "your_user"
+  user = ${?DB_USER}
+  
+  password = "your_password"
+  password = ${?DB_PASSWORD}
+  
   driver = "org.postgresql.Driver"
   
-  table = ${DB_TABLE:"my_table"}
-  partitions = ${DB_PARTITIONS:"100"}
-  partition-column = "spark_partition"
+  your_first_table {
+    table_name = "first_table_name"
+    table_name = ${?DB_TABLE}
+  }
+  
+  your_second_table {
+    table_name = "second_table_name"
+    table_name = ${?DB_TABLE2}
+    partitions = 100
+    partitions = ${?DB_PARTITIONS}
+    partition-column = "spark_partition"
+    partition-column = ${?PARTITION_COLUMN}
+  }
 }
