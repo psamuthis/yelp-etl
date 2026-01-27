@@ -1,6 +1,6 @@
-# COPY AND RENAMED TO pg_source.conf WITHIN THIS DIRECTORY
-# COPY AND RENAMED TO pg_source.conf WITHIN THIS DIRECTORY
-# COPY AND RENAMED TO pg_source.conf WITHIN THIS DIRECTORY
+# COPY AND RENAME TO pg_source.conf WITHIN THIS DIRECTORY
+# COPY AND RENAME TO pg_source.conf WITHIN THIS DIRECTORY
+# COPY AND RENAME TO pg_source.conf WITHIN THIS DIRECTORY
 pg_source {
   url = "jdbc:postgresql://localhost:5432/your_db"
   url = ${?DB_URL}
