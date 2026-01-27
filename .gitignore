@@ -1,5 +1,6 @@
 /.bsp/
 target/
 data/*
+pg_source.conf
 
 !.gitkeep
