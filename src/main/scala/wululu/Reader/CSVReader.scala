@@ -1,7 +1,8 @@
 package wululu
 
+import org.apache.spark.sql.{DataFrame}
+
 import SparkSessionWrapper.spark
-import org.apache.spark.sql.{SparkSession, DataFrame}
 
 class CSVReader(val filePath: String) {
     def readFile(): DataFrame = {
@@ -14,5 +15,4 @@ class CSVReader(val filePath: String) {
             .option("mode", "DROPMALFORMED")   // or PERMISSIVE, FAILFAST
             .csv(filePath)
     }
-
 }

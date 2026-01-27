@@ -1,8 +1,10 @@
 package wululu
 
-import SparkSessionWrapper.spark
 import org.apache.spark.sql.{SparkSession, DataFrame}
 import org.apache.spark.sql.functions._
+
+import wululu.SparkSessionWrapper.spark
+import wululu.DataConfigReader.Paths
 
 class JSONReader(val filePath: String) {
     def readNDJSONFile(): DataFrame = {
