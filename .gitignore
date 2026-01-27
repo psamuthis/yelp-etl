@@ -1,6 +1,8 @@
 /.bsp/
 target/
 data/*
+
 pg_source.conf
+oracle_sink.conf
 
 !.gitkeep

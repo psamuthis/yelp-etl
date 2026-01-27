@@ -22,8 +22,5 @@ object LoadFriend {
             .option("lowerBound", "0")
             .option("upperBound", dbConfig.getString("friend_table.partitions"))
             .load()
-
-        println(df.show(10))
-        println(df.count())
     }
 }

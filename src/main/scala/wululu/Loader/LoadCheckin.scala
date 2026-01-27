@@ -9,8 +9,5 @@ object LoadCheckin {
         val reader = new JSONReader(Paths.JSON.checkin)
         var df = reader.readNDJSONFile()
         df = reader.handleConcatenatedDates(df)
-
-        println(df.show(10))
-        println(df.count())
     }
 }
