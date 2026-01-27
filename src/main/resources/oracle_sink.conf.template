@@ -1,0 +1,21 @@
+# COPY AND RENAME TO oracle_sink.conf WITHIN THIS DIRECTORY
+# COPY AND RENAME TO oracle_sink.conf WITHIN THIS DIRECTORY
+# COPY AND RENAME TO oracle_sink.conf WITHIN THIS DIRECTORY
+oracle_sink {
+    url = "jdbc:oracle:thin:@//hostname:port/service_name"
+    url = ${?SINK_URL}
+
+    user = "your_user"
+    user = ${?SINK_USER}
+
+    password = "your_password"
+    password = ${?SINK_PASSWORD}
+
+    driver = "oracle.jdbc.OracleDriver"
+
+    some_table {
+        table_name = "some_table"
+        table_name = ${?SINK_SOME_TABLE}
+        batch_size = "420"
+    }
+}
