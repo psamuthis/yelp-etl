@@ -6,11 +6,11 @@ import org.apache.spark.sql.{DataFrame}
 import wululu.SparkSessionWrapper.spark
 
 object LoadReview {
-    def main(args: Array[String]): Unit = {
+    def getDataFrame(): DataFrame = {
         val config = ConfigFactory.load("pg_source.conf")
         val dbConfig = config.getConfig("pg_source")
 
-        val df: DataFrame = spark.read
+        spark.read
             .format("jdbc")
             .option("url", dbConfig.getString("url"))
             .option("user", dbConfig.getString("user"))
@@ -22,8 +22,5 @@ object LoadReview {
             .option("lowerBound", "0")
             .option("upperBound", dbConfig.getString("review_table.partitions"))
             .load()
-
-        println(df.show(10))
-        println(df.count())
     }
 }

@@ -6,11 +6,11 @@ import org.apache.spark.sql.{DataFrame}
 import wululu.SparkSessionWrapper.spark
 
 object LoadElite {
-    def main(args: Array[String]): Unit = {
+    def getDataFrame(): DataFrame = {
         val config = ConfigFactory.load("pg_source.conf")
         val dbConfig = config.getConfig("pg_source")
 
-        val df: DataFrame = spark.read
+        spark.read
             .format("jdbc")
             .option("url", dbConfig.getString("url"))
             .option("user", dbConfig.getString("user"))

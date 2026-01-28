@@ -7,6 +7,6 @@ object SparkSessionWrapper {
     .appName("ETLApplication")
     .master("local[*]")
     .getOrCreate()
-  
+
   spark.sparkContext.setLogLevel("ERROR")
 }
