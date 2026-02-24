@@ -15,6 +15,7 @@ object TransformBusiness {
         val businessDF: DataFrame = createBusinessDataFrame(df)
         val categoryDF: DataFrame = createCategoryDataFrame(df)
         val businessCategoryLink: DataFrame = createBusinessCategoryBridgeDF(df, categoryDF)
+        
     }
 
     

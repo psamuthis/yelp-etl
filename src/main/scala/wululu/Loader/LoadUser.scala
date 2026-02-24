@@ -6,7 +6,7 @@ import org.apache.spark.sql.{DataFrame}
 import wululu.SparkSessionWrapper.spark
 
 object LoadUser {
-    def getDataFrame: DataFrame = {
+    def getDataFrame(): DataFrame = {
         val config = ConfigFactory.load("pg_source.conf")
         val dbConfig = config.getConfig("pg_source")
 
