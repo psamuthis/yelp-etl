@@ -8,7 +8,7 @@ import wululu.SparkSessionWrapper.spark
 
 object TransformBusiness {
     def main(args: Array[String]): Unit = {
-        val df: DataFrame = LoadBusiness.getDataFrame().limit(1000) //test
+        val df: DataFrame = LoadBusiness.getDataFrame().limit(1000) //limit(1000) for testing first
         df.columns.foreach(println)
 
         val locationDF: DataFrame = createLocationDataFrame(df)

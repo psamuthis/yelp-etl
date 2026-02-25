@@ -18,7 +18,7 @@ object TransformPerformanceFact {
 
     def createPerformanceFactDF(businessDF: DataFrame, locationDF: DataFrame, calendarDF: DataFrame): DataFrame = {
 
-        // Helper pour transformer la date une seule fois
+        // Helper to transform date format only one time
         def withTimeId(df: DataFrame) = df.withColumn("ID_Temps", date_format(col("date"), "yyyyMM").cast("int"))
 
         val reviewAgg = withTimeId(LoadReview.getDataFrame().select("business_id", "date", "review_id", "stars"))
