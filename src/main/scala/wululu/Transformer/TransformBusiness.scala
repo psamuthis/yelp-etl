@@ -12,10 +12,14 @@ object TransformBusiness {
         df.columns.foreach(println)
 
         val locationDF: DataFrame = createLocationDataFrame(df)
+        StorageManager.save(locationDF,"location")
         val businessDF: DataFrame = createBusinessDataFrame(df)
+        StorageManager.save(businessDF,"business")
         val categoryDF: DataFrame = createCategoryDataFrame(df)
+        StorageManager.save(categoryDF,"category")
         val businessCategoryLink: DataFrame = createBusinessCategoryBridgeDF(df, categoryDF)
-        
+        StorageManager.save(businessCategoryLink,"businessCategoryLink")
+
     }
 
     
@@ -60,5 +64,6 @@ object TransformBusiness {
             "latitude",
             "longitude",
         )
+        .withColumn("location_id", monotonically_increasing_id())
     }
 }

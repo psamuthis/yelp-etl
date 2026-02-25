@@ -1,0 +1,4 @@
+# Alloue maximum 4Go de mémoire, minimum 2. UseG1GC est un garbage collector plus optimisé
+-J-Xmx4G
+-J-Xms2G
+-J-XX:+UseG1GC

@@ -8,11 +8,12 @@ import wululu.SparkSessionWrapper.spark
 
 object TransformCalendar {
     def main(args: Array[String]): Unit = {
-        val df: DataFrame = LoadCheckin.getDataFrame()
+        val df: DataFrame = LoadReview.getDataFrame()
         df.columns.foreach(println)
 
         val calendarDF: DataFrame = createMonthlyTimeDimension(df,"date")
         calendarDF.groupBy("year").count().orderBy("year").show()
+        StorageManager.save(calendarDF,"calendar")
         
     }
 
