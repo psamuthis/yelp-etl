@@ -14,6 +14,7 @@ object TransformPerformanceFact {
 
         val df:DataFrame = createPerformanceFactDF(businessDF,locationDF,calendarDF)
         df.columns.foreach(println)
+        StorageManager.save(df,"performanceFact")
     }
 
     def createPerformanceFactDF(businessDF: DataFrame, locationDF: DataFrame, calendarDF: DataFrame): DataFrame = {

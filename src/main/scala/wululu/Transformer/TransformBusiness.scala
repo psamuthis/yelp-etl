@@ -8,7 +8,7 @@ import wululu.SparkSessionWrapper.spark
 
 object TransformBusiness {
     def main(args: Array[String]): Unit = {
-        val df: DataFrame = LoadBusiness.getDataFrame().limit(1000) //limit(1000) for testing first
+        val df: DataFrame = LoadBusiness.getDataFrame()
         df.columns.foreach(println)
 
         val locationDF: DataFrame = createLocationDataFrame(df)
@@ -37,11 +37,9 @@ object TransformBusiness {
         df
             .withColumn("category_array", split(col("categories"), ", "))
             .withColumn("category_name", explode(col("category_array")))
+            .select(col("category_name"))
+            .distinct()
             .withColumn("category_id", monotonically_increasing_id())
-            .select(
-                col("category_id"),
-                col("category_name"),
-            )
     }
 
     def createBusinessDataFrame(df: DataFrame): DataFrame = {
