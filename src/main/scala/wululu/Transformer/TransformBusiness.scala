@@ -43,8 +43,8 @@ object TransformBusiness {
     }
 
     def createBusinessDataFrame(df: DataFrame): DataFrame = {
-        //TODO: attributes require finer processing
         df.select(
+            "business_id",
             "name",
             "stars",
             "is_open",
